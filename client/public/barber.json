@@ -1,0 +1,64 @@
+[
+  {
+    "news": [
+      {
+        "post": ""
+      }
+    ],
+
+    "products": [
+      {
+        "urlphoto": [],
+        "name": "",
+        "description": "",
+        "price": "",
+        "amount": ""
+      }
+    ],
+
+    "user": [
+      {
+        "name": "",
+        "surname": "",
+        "mobilePhone": "",
+        "email": "",
+        "login": "",
+        "password": "",
+        "role": "",
+        "department": {
+          "adress": "",
+          "number": ""
+        }
+      }
+    ],
+
+    "visit": [
+      {
+        "date": "",
+        "payment": "",
+        "time": {
+          "start": "",
+          "finish": ""
+        },
+        "service": {
+          "name": "",
+          "description": "",
+          "price": ""
+        },
+        "barber": {
+          "name": "",
+          "surname": ""
+        },
+        "client": {
+          "name": "",
+          "surname": "",
+          "mobilePhone": ""
+        },
+        "department": {
+          "adress": "",
+          "number": ""
+        }
+      }
+    ]
+  }
+]
