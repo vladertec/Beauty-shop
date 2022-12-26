@@ -2,13 +2,12 @@ import mongoose from "mongoose"
 import Product from "../models/product.js"
 
 const add = async (req, res) => {
-  const { name, description, photos, price, amount } = req.body
+  const { name, description, photos, price } = req.body
   const product = await Product.create({
     name,
     description,
     photos,
     price,
-    amount,
   })
   res.json(product)
 }
@@ -31,4 +30,18 @@ const getOne = async (req, res) => {
   res.json(product)
 }
 
-export default { add, getAll, getOne }
+const deleteOne = async (req, res) => {
+  const { productId } = req.params
+  const isValid = mongoose.Types.ObjectId.isValid(productId)
+  if (!isValid) {
+    return res.status(404).json({ status: 404, message: "User not found" })
+  }
+  try {
+    await Product.deleteOne({ _id: productId })
+    res.sendStatus(200)
+  } catch {
+    res.sendStatus(500)
+  }
+}
+
+export default { add, getAll, getOne, deleteOne }

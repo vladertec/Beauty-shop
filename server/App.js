@@ -4,6 +4,7 @@ import NewsController from "./controllers/news.js"
 import UserController from "./controllers/user.js"
 import ProductController from "./controllers/product.js"
 import VisitController from "./controllers/visit.js"
+import cors from "cors"
 
 const app = express()
 app.use(express.json())
@@ -31,6 +32,7 @@ app.delete("/api/news/:newsId", NewsController.deleteOne)
 app.post("/api/product", ProductController.add)
 app.get("/api/product", ProductController.getAll)
 app.get("/api/product/:productId", ProductController.getOne)
+app.delete("/api/product/:productId", ProductController.deleteOne)
 
 //About connection
 app.listen(4000, () => {

@@ -1,0 +1,70 @@
+.header-wrapper {
+  width: 100%;
+  @include flex-container;
+  background-color: #101010;
+  height: 6vw;
+  color: white;
+
+  &__logo {
+    cursor: pointer;
+    @include flex-container;
+    width: 25%;
+
+    .logo__img {
+      width: 50%;
+      height: auto;
+    }
+  }
+
+  &__menu {
+    cursor: pointer;
+    @include flex-container;
+    font-family: "Manrope", serif;
+    font-size: 1.1vw;
+    gap: 6%;
+    width: 50%;
+
+    .menu-header__text:hover {
+      color: #b48e40;
+      padding-bottom: 1.5%;
+      border-bottom: 1px solid #b48e40;
+    }
+  }
+
+  &__user {
+    @include flex-container;
+    gap: 6%;
+    width: 25%;
+
+    .user-part {
+      &__container {
+        cursor: pointer;
+        @include flex-container;
+        .user-information {
+          &__icon-number {
+            margin-left: 10%;
+          }
+
+          &__btn {
+            background-color: #b48e40;
+            padding-top: 7%;
+            padding-bottom: 7%;
+            color: white;
+            cursor: pointer;
+            font-size: 1vw;
+          }
+
+          &__btn:hover {
+            font-weight: bold;
+            padding-top: 9%;
+            padding-bottom: 9%;
+          }
+        }
+      }
+      &__container:hover{
+        color: #b48e40;
+        font-size: 1.3vw;
+      }
+    }
+  }
+}

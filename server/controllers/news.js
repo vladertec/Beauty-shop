@@ -2,8 +2,8 @@ import mongoose from "mongoose"
 import News from "../models/news.js"
 
 const add = async (req, res) => {
-  const { name, description, photos } = req.body
-  const news = await News.create({ name, description, photos })
+  const { name, date, description, photos } = req.body
+  const news = await News.create({ name, date, description, photos })
   res.json(news)
 }
 

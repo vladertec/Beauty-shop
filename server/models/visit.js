@@ -3,7 +3,6 @@ import mongoose from "mongoose"
 const visitSchema = new mongoose.Schema(
   {
     date: Date,
-    payment: Boolean,
     time: {
       start: Date,
       finish: Date,

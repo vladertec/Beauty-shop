@@ -1,0 +1,23 @@
+.success-container {
+  @include flex-container;
+  flex-direction: column;
+  color: white;
+
+  &__title {
+    margin-top: 7%;
+    font-size: 3vw;
+    font-weight: bold;
+    font-family: "Arima Madurai", serif;
+  }
+
+  &__link {
+    border-bottom: 1px solid white;
+    margin-top: 3%;
+    margin-bottom: 15%;
+  }
+
+  &__link:hover {
+    border-bottom: 1px solid #b48e40;
+    color: #b48e40;
+  }
+}
