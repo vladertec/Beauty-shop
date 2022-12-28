@@ -1,20 +1,13 @@
 import express from "express"
 import mongoose from "mongoose"
 import NewsController from "./controllers/news.js"
-import UserController from "./controllers/user.js"
 import ProductController from "./controllers/product.js"
 import VisitController from "./controllers/visit.js"
-import cors from "cors"
+import ContactController from "./controllers/contact.js"
+import EmailController from "./controllers/email.js"
 
 const app = express()
 app.use(express.json())
-
-//User
-app.post("/api/user", UserController.add)
-app.get("/api/user", UserController.getAll)
-app.get("/api/user/:userId", UserController.getOne)
-app.patch("/api/user/:userId", UserController.update)
-app.delete("/api/user/:userId", UserController.deleteOne)
 
 //Visit
 app.post("/api/visit", VisitController.add)
@@ -33,6 +26,17 @@ app.post("/api/product", ProductController.add)
 app.get("/api/product", ProductController.getAll)
 app.get("/api/product/:productId", ProductController.getOne)
 app.delete("/api/product/:productId", ProductController.deleteOne)
+
+//Contact
+app.post("/api/contact", ContactController.add)
+app.get("/api/contact", ContactController.getAll)
+app.delete("/api/contact/:contactId", ContactController.deleteOne)
+
+//Email
+app.post("/api/email", EmailController.add)
+app.get("/api/email", EmailController.getAll)
+app.delete("/api/email/:emailId", EmailController.deleteOne)
+
 
 //About connection
 app.listen(4000, () => {

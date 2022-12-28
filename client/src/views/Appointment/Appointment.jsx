@@ -74,26 +74,23 @@ const Appointment = () => {
               onBlur={handleBlur}
             />
             {errors.password && touched.password && errors.password}
-            <input
-              className="book-form__input"
-              placeholder="Service"
-              type="service"
-              name="service"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-            />
-            {errors.email && touched.email && errors.email}
-            <input
-              className="book-form__input"
-              placeholder="Barber"
-              type="barber"
-              name="barber"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-            />
-            {errors.email && touched.email && errors.email}
+
+            <select className="book-form__input">
+              <option value="grapefruit">Haircut long hair 30$</option>
+              <option value="lime">Haircut fade 25$</option>
+              <option value="coconut">Haircut beard 10$</option>
+              <option value="mango">Haircut with a machine 15$</option>
+              <option value="mango">Head camouflage 25$</option>
+              <option value="mango">Сhildren's haircut 35$</option>
+            </select>
+
+            <select className="book-form__input">
+              <option value="grapefruit">Vladik Sarnavskyi</option>
+              <option value="lime">Alina Levchenko</option>
+              <option value="coconut">Yurii Podnemesovс</option>
+              <option value="mango">Kornaga Yaroslav</option>
+            </select>
+            
             <input
               className="book-form__input"
               type="date"
@@ -110,7 +107,8 @@ const Appointment = () => {
               onBlur={handleBlur}
               value={values.email}
             />
-            <Link to="/appointment/success"
+            <Link
+              to="/appointment/success"
               className="book-form__btn"
               type="submit"
               disabled={isSubmitting}

@@ -1,6 +1,19 @@
+import { useState } from "react"
+import { sendContact } from "../../api/contact"
 import LogoBrands from "../../components/LogoBrands/LogoBrands"
 
 const Contact = () => {
+  const [contactObject, setContactObject] = useState({
+    name: "",
+    surname: "",
+    email: "",
+    message: "",
+  })
+
+  const sendContactInformation = (e) => {
+    sendContact(contactObject)
+  }
+
   return (
     <div className="contact-container">
       <section className="blog-section__photo img">
@@ -58,37 +71,59 @@ const Contact = () => {
           </div>
         </div>
 
-        <form className="contact-help__send-message message" >
+        <div className="contact-help__send-message message">
           <h3 className="message__title">Send Message</h3>
           <div className="message__line"></div>
-          <div className="message__input-block input-information">
+          <form className="message__input-block input-information">
             <input
               className="input-information__input"
               type="text"
               placeholder="Name"
               name="name"
+              value={contactObject.name}
+              onInput={(e) =>
+                setContactObject({ ...contactObject, name: e.target.value })
+              }
             ></input>
             <input
               className="input-information__input"
               type="text"
               placeholder="Surname"
               name="surname"
+              value={contactObject.surname}
+              onInput={(e) =>
+                setContactObject({ ...contactObject, surname: e.target.value })
+              }
             ></input>
             <input
               className="input-information__input"
               type="email"
               placeholder="Email"
               name="email"
+              value={contactObject.email}
+              onInput={(e) =>
+                setContactObject({ ...contactObject, email: e.target.value })
+              }
             ></input>
             <input
               className="input-information__input"
               type="text"
               placeholder="Message"
               name="message"
+              value={contactObject.message}
+              onInput={(e) =>
+                setContactObject({ ...contactObject, message: e.target.value })
+              }
             ></input>
-          </div>
-          <button className="message__btn">Send Message</button>
-        </form>
+            <button
+              onClick={sendContactInformation}
+              className="message__btn"
+              type="button"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
       </section>
 
       <LogoBrands />

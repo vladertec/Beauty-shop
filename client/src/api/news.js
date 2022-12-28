@@ -8,3 +8,5 @@ export const getNews = async () => {
     return err
   }
 }
+
+

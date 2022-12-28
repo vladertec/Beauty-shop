@@ -2,40 +2,11 @@ import mongoose from "mongoose"
 import Visit from "../models/visit.js"
 
 const add = async (req, res) => {
-  const {
-    date,
-    payment,
-    time: { start, finish },
-    service: { nameService, description, price },
-    barber: { nameBarber, surnameBarber },
-    client: { nameClient, surnameClient, mobilePhone },
-    department: { address, number },
-  } = req.body
+  const { name, surname, mobilePhone } = req.body
   const visit = await Visit.create({
-    date,
-    payment,
-    time: {
-      start,
-      finish,
-    },
-    service: {
-      nameService,
-      description,
-      price,
-    },
-    barber: {
-      nameBarber,
-      surnameBarber,
-    },
-    client: {
-      nameClient,
-      surnameClient,
-      mobilePhone,
-    },
-    department: {
-      address,
-      number,
-    },
+    name,
+    surname,
+    mobilePhone,
   })
   res.json(visit)
 }
@@ -65,13 +36,9 @@ const update = async (req, res) => {
     return res.status(404).json({ status: 404, message: "User not found" })
   }
   const visit = await Visit.findByIdAndUpdate(visitId, {
-    date,
-    payment,
-    time: { start, finish },
-    service: { nameService, description, price },
-    barber: { nameBarber, surnameBarber },
-    client: { nameClient, surnameClient, mobilePhone },
-    department: { address, number },
+    name,
+    surname,
+    mobilePhone,
   })
 
   res.json(visit)

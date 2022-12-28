@@ -14,7 +14,7 @@ function Home() {
           hendrerit lacinia mollis. Fusce in leo lectus.
         </p>
         <Link to="/blog">
-          <button to="/blog" className="info__btn">
+          <button type="button" to="/blog" className="info__btn">
             Read More »
           </button>
         </Link>
@@ -82,7 +82,9 @@ function Home() {
               on their head. This is done to allow for better{" "}
             </p>
             <Link to="/blog">
-              <button className="text-info__btn">Read More »</button>
+              <button type="button" className="text-info__btn">
+                Read More »
+              </button>
             </Link>
           </div>
         </div>
@@ -143,7 +145,9 @@ function Home() {
           ></img>
         </div>
         <Link to="/photo">
-          <button className="info__btn">SEE MORE »</button>
+          <button type="button" className="info__btn">
+            SEE MORE »
+          </button>
         </Link>
       </section>
       <SubscribeEmail />
