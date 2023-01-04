@@ -5,9 +5,17 @@ import ProductController from "./controllers/product.js"
 import VisitController from "./controllers/visit.js"
 import ContactController from "./controllers/contact.js"
 import EmailController from "./controllers/email.js"
+import BarberController from "./controllers/barber.js"
 
 const app = express()
 app.use(express.json())
+
+//Barber
+app.post("/api/barber", BarberController.add)
+app.get("/api/barber", BarberController.getAll)
+app.get("/api/barber/:barberId", BarberController.getOne)
+app.patch("/api/barber/:barberId", BarberController.update)
+app.delete("/api/barber/:barberId", BarberController.deleteOne)
 
 //Visit
 app.post("/api/visit", VisitController.add)
@@ -36,7 +44,6 @@ app.delete("/api/contact/:contactId", ContactController.deleteOne)
 app.post("/api/email", EmailController.add)
 app.get("/api/email", EmailController.getAll)
 app.delete("/api/email/:emailId", EmailController.deleteOne)
-
 
 //About connection
 app.listen(4000, () => {

@@ -1,8 +1,23 @@
-import React from "react"
+import React, { useState } from "react"
 import { Formik } from "formik"
 import { Link } from "react-router-dom"
+import { sendVisit } from "../../api/visit"
 
 const Appointment = () => {
+  const [appointmentObject, setAppointmentObject] = useState({
+    name: "",
+    surname: "",
+    mobilePhone: 380,
+    service: "",
+    barber: "",
+    date: "",
+    time: "",
+  })
+
+  const sendContactInformation = (e) => {
+    sendVisit(appointmentObject)
+  }
+
   return (
     <div className="appointment-container">
       <p className="appointment-container__title">
@@ -10,10 +25,13 @@ const Appointment = () => {
       </p>
       <Formik
         initialValues={{
+          name: "",
+          surname: "",
+          mobilePhone: "",
+          service: "",
+          barber: "",
           date: "",
           time: "",
-          service: { nameService: "" },
-          client: { name: "", surname: "", phone: "" },
         }}
         validate={(values) => {
           const errors = {}
@@ -53,7 +71,13 @@ const Appointment = () => {
               name="name"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.email}
+              value={appointmentObject.name}
+              onInput={(e) =>
+                setAppointmentObject({
+                  ...appointmentObject,
+                  name: e.target.value,
+                })
+              }
             />
             {errors.email && touched.email && errors.email}
             <input
@@ -63,6 +87,13 @@ const Appointment = () => {
               name="surname"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={appointmentObject.surname}
+              onInput={(e) =>
+                setAppointmentObject({
+                  ...appointmentObject,
+                  surname: e.target.value,
+                })
+              }
             />
             {errors.password && touched.password && errors.password}
             <input
@@ -72,32 +103,70 @@ const Appointment = () => {
               name="phone"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={appointmentObject.mobilePhone}
+              onInput={(e) =>
+                setAppointmentObject({
+                  ...appointmentObject,
+                  mobilePhone: e.target.value,
+                })
+              }
             />
             {errors.password && touched.password && errors.password}
 
-            <select className="book-form__input">
-              <option value="grapefruit">Haircut long hair 30$</option>
-              <option value="lime">Haircut fade 25$</option>
-              <option value="coconut">Haircut beard 10$</option>
-              <option value="mango">Haircut with a machine 15$</option>
-              <option value="mango">Head camouflage 25$</option>
-              <option value="mango">Сhildren's haircut 35$</option>
+            <select
+              className="book-form__input"
+              value={appointmentObject.service}
+              onChange={(e) =>
+                setAppointmentObject({
+                  ...appointmentObject,
+                  service: e.target.value,
+                })
+              }
+            >
+              <option value="Haircut long hair 30$">
+                Haircut long hair 30$
+              </option>
+              <option value="Haircut fade 25$">Haircut fade 25$</option>
+              <option value="Haircut beard 10$">Haircut beard 10$</option>
+              <option value="Haircut with a machine 15$">
+                Haircut with a machine 15$
+              </option>
+              <option value="Head camouflage 25$">Head camouflage 25$</option>
+              <option value="Сhildren's haircut 35$">
+                Сhildren's haircut 35$
+              </option>
             </select>
 
-            <select className="book-form__input">
-              <option value="grapefruit">Vladik Sarnavskyi</option>
-              <option value="lime">Alina Levchenko</option>
-              <option value="coconut">Yurii Podnemesovс</option>
-              <option value="mango">Kornaga Yaroslav</option>
+            <select
+              className="book-form__input"
+              value={appointmentObject.barber}
+              onChange={(e) =>
+                setAppointmentObject({
+                  ...appointmentObject,
+                  barber: e.target.value,
+                })
+              }
+            >
+              <option value="Vladik Sarnavskyi">Vladik Sarnavskyi</option>
+              <option value="Alina Levchenko">Alina Levchenko</option>
+              <option value="Yuryi Podnebesov">Yuryi Podnebesov</option>
+              <option value="Kornaga Yaroslav">Kornaga Yaroslav</option>
+              <option value="Yurii Polischuk">Yurii Polischuk</option>
             </select>
-            
+
             <input
               className="book-form__input"
               type="date"
               name="date"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.email}
+              value={appointmentObject.date}
+              onInput={(e) =>
+                setAppointmentObject({
+                  ...appointmentObject,
+                  date: e.target.value,
+                })
+              }
             />
             <input
               className="book-form__input"
@@ -105,15 +174,23 @@ const Appointment = () => {
               name="time"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.email}
+              value={appointmentObject.time}
+              onInput={(e) =>
+                setAppointmentObject({
+                  ...appointmentObject,
+                  time: e.target.value,
+                })
+              }
             />
-            <Link
-              to="/appointment/success"
-              className="book-form__btn"
-              type="submit"
-              disabled={isSubmitting}
-            >
-              Send booking
+            <Link to="/appointment/success">
+              <button
+                className="book-form__btn"
+                disabled={isSubmitting}
+                onClick={sendContactInformation}
+                type="button"
+              >
+                Send booking
+              </button>
             </Link>
           </form>
         )}

@@ -1,0 +1,20 @@
+.plug-container{
+    @include flex-container;
+    flex-direction: column;
+    
+    &__welcome{
+        font-size: 2.4vw;
+        color: white;
+        font-weight: bold;
+        margin-top: 2%;
+        font-family: "Arima Madurai", serif;
+    }
+
+    &__enter{
+        font-size: 1.5vw;
+        color: white;
+        font-weight: bold;
+        margin-top: 10%;
+        font-family: "Arima Madurai", serif;
+    }
+}

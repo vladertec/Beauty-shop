@@ -2,11 +2,15 @@ import mongoose from "mongoose"
 import Visit from "../models/visit.js"
 
 const add = async (req, res) => {
-  const { name, surname, mobilePhone } = req.body
+  const { name, surname, mobilePhone, service, barber, date, time } = req.body
   const visit = await Visit.create({
     name,
     surname,
     mobilePhone,
+    service,
+    barber,
+    date,
+    time,
   })
   res.json(visit)
 }

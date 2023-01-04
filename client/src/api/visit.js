@@ -8,3 +8,4 @@ export const sendVisit = async (visit) => {
     return err
   }
 }
+

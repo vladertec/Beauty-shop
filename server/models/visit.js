@@ -5,6 +5,10 @@ const visitSchema = new mongoose.Schema(
     name: String,
     surname: String,
     mobilePhone: Number,
+    service: String,
+    barber: String,
+    date: Date,
+    time: String,
   },
   { versionKey: false }
 )
